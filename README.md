@@ -40,7 +40,6 @@ imageNIS = nispreprocess(imgRaw, background, smooth_window, sample_ratio, dr, sa
 ```matlab
 background = imread("background.tif");
 imgFlat = remove_background(imgRaw,background);
-图像去噪函数：waveletsdenoise.m
 ```
 ## 基于小波变换的去噪函数：waveletsdenoise.m
 将图像分解为四个频带，分别为低频AA自带，HL子带，LH自带，HH子带，在AA子带保持不变，在其它子带分别用sobel算子计算边缘，在边缘区保持不变，其它区域通过软阈值变换，去除噪声。
