@@ -1,0 +1,11 @@
+image = load("E:\ImagePreProcess\datas\TestExamples\TestExample6\NISImage_p0_0.05_p2_0.25_range0.1_peak2.mat").imageNIS;
+figure();imagesc(image);colorbar;
+img_size = size(image,1);
+A_background = max(image(:)) * 0.3;
+A_gaussian = A_background;
+num_gaussian = 2;
+background = generate_background(img_size,A_background,A_gaussian,num_gaussian);
+image_b = background + image;
+figure();imagesc(image);colorbar;
+image_r = sub_surface(image_b);
+RadialProfile_cmp(image,image_r,601,601,0,0,"理想图像+处理后对比");
